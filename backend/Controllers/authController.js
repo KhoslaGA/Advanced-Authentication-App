@@ -169,36 +169,6 @@ export const forgotPassword = async (req, res) => {
   }
 };
 
-// export const resetPassword = async (req, res) => {
-//   try {
-//     const { token } = req.params;
-//     const { password } = req.body;
-
-//     const user = await User.findOne({
-//       resetPasswordToken: token,
-//       resetPasswordExpiresAt: { $gt: Date.now() },
-//     });
-
-//     if (!user) {
-//       res.status(200).json({ success: false, message: "User not found" });
-//     }
-
-//     //* Update Password
-//     const hashedPassword = await bcryptjs.hash(password, 10);
-//     user.password = hashedPassword;
-//     user.resetPasswordToken = undefined;
-//     user.resetPasswordExpiresAt = undefined;
-
-//     // *Save updated password in database
-//     await user.save();
-
-//     //* send password reset successfull email
-//     await sendResetSuccessEmail(user.email);
-//   } catch (err) {
-//     console.log("Error sending password reset success email ", err.message);
-//     res.status(500).json({ success: false, message: "Server error" });
-//   }
-// };
 
 export const resetPassword = async (req, res) => {
   try {
